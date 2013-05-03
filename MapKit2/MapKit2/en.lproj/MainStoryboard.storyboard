@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="IVO-YM-mVT">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="15a-yE-93G">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="IVO-YM-mVT" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gnx-H2-Ekt">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="lh1-Bb-Eef" kind="relationship" relationship="rootViewController" id="TNX-X9-PfG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S6H-Ml-pdq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2071" y="-561"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ipU-w7-XSo">
+            <objects>
+                <viewController id="lh1-Bb-Eef" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CiO-0p-HUx">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LMq-Yv-KPh">
+                                <connections>
+                                    <outlet property="delegate" destination="lh1-Bb-Eef" id="zMJ-Sh-Lcv"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LMq-Yv-KPh" firstAttribute="bottom" secondItem="CiO-0p-HUx" secondAttribute="bottom" type="default" id="FII-QS-e0x"/>
+                            <constraint firstItem="LMq-Yv-KPh" firstAttribute="trailing" secondItem="CiO-0p-HUx" secondAttribute="trailing" type="default" id="bnn-b4-Wl6"/>
+                            <constraint firstItem="LMq-Yv-KPh" firstAttribute="leading" secondItem="CiO-0p-HUx" secondAttribute="leading" type="default" id="gIM-eh-5fs"/>
+                            <constraint firstItem="LMq-Yv-KPh" firstAttribute="top" secondItem="CiO-0p-HUx" secondAttribute="top" type="default" id="nzM-AA-yiY"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="rmr-C2-nKm"/>
+                    <connections>
+                        <outlet property="mapView" destination="LMq-Yv-KPh" id="dTL-0n-FeW"/>
+                        <segue destination="QiH-Xx-r9O" kind="push" identifier="detail" id="0Te-C6-CsT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rbh-6F-FtR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1303" y="-593"/>
+        </scene>
+        <!--Detail Controller-->
+        <scene sceneID="GIv-fE-0KD">
+            <objects>
+                <viewController id="QiH-Xx-r9O" customClass="DetailController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rF7-Lf-bH2">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Detalle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOy-Fg-a2Y">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gOy-Fg-a2Y" firstAttribute="top" secondItem="rF7-Lf-bH2" secondAttribute="top" constant="88" id="KAY-Xj-xC2"/>
+                            <constraint firstItem="gOy-Fg-a2Y" firstAttribute="leading" secondItem="rF7-Lf-bH2" secondAttribute="leading" constant="85" id="lFG-vQ-azZ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="WFk-1I-UTW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rwc-uY-Jij" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-863" y="-662"/>
+        </scene>
+    </scenes>
+    <classes>
+        <class className="DetailController" superclassName="ViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+    </classes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
