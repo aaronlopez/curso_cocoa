@@ -9,14 +9,15 @@
 #import "ViewController.h"
 
 @interface ViewController ()
-
+@property(retain,nonatomic)MPMoviePlayerController *moviePlayer;
 @end
 
 @implementation ViewController
-
+@synthesize moviePlayer;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+     self.moviePlayer = [[MPMoviePlayerController alloc] init];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -41,15 +42,18 @@
     return theMovieURL;
 }
 - (IBAction)playVideoURL:(id)sender {
-    MPMoviePlayerController *moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[self localMovieURL]];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(moviePlayBackDidFinish:)
-                                                 name:MPMoviePlayerPlaybackDidFinishNotification
-                                               object:moviePlayer];
     
-    [moviePlayer setMovieSourceType:MPMovieSourceTypeFile];
-    [self.view addSubview:moviePlayer.view];
-    [moviePlayer setFullscreen:YES];
+   
+         [self.moviePlayer setContentURL:[NSURL URLWithString:@"https://s3-eu-west-1.amazonaws.com/david.videos/shake.mp4"]];
+       [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(moviePlayBackDidFinish:)
+                                                     name:MPMoviePlayerPlaybackDidFinishNotification
+                                                   object:moviePlayer];
+        
+        [moviePlayer setMovieSourceType:MPMovieSourceTypeUnknown];
+        [self.view addSubview:moviePlayer.view];
+        [moviePlayer setFullscreen:YES];
+        
    
 }
 - (void) moviePlayBackDidFinish:(NSNotification*)notification {
@@ -58,11 +62,5 @@
      removeObserver:self
      name:MPMoviePlayerPlaybackDidFinishNotification
      object:player];
-    
-    if ([player
-         respondsToSelector:@selector(setFullscreen:animated:)])
-    {
-        [player.view removeFromSuperview];
     }
-}
 @end

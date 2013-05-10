@@ -32,6 +32,7 @@
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="uYQ-Rq-Vbi">
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="141" id="dTt-dc-ghK"/>
                                     <constraint firstAttribute="height" constant="166" id="lob-f9-fZX"/>
                                 </constraints>
                             </imageView>
@@ -41,11 +42,10 @@
                             <constraint firstItem="uYQ-Rq-Vbi" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="1YR-jg-ido"/>
                             <constraint firstItem="uYQ-Rq-Vbi" firstAttribute="top" secondItem="3" secondAttribute="top" constant="268" id="4m9-du-B6J"/>
                             <constraint firstItem="eFS-3T-vya" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="7FY-b6-zOI"/>
-                            <constraint firstItem="uYQ-Rq-Vbi" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="J4y-3m-JQg"/>
                             <constraint firstItem="LDm-2h-sXe" firstAttribute="top" secondItem="eFS-3T-vya" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Oxx-lj-Wmz"/>
-                            <constraint firstItem="uYQ-Rq-Vbi" firstAttribute="centerX" secondItem="LDm-2h-sXe" secondAttribute="centerX" type="default" id="Wnl-0M-LIG"/>
                             <constraint firstItem="eFS-3T-vya" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="jwn-Wq-GLC"/>
                             <constraint firstItem="eFS-3T-vya" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="k4V-rG-9rz"/>
+                            <constraint firstItem="eFS-3T-vya" firstAttribute="centerX" secondItem="LDm-2h-sXe" secondAttribute="centerX" type="default" id="syA-nm-KTb"/>
                         </constraints>
                     </view>
                     <connections>
@@ -60,18 +60,6 @@
     <resources>
         <image name="lena.bmp" width="512" height="512"/>
     </resources>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="filteredImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="originalImage" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

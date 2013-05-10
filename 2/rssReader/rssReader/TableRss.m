@@ -88,7 +88,8 @@
 
 -(void) query1{
     NSXMLParser *parser			= [[NSXMLParser alloc] initWithContentsOfURL:[NSURL URLWithString:@"https://s3-eu-west-1.amazonaws.com/david.miprueba/reuters.rss.xml"]];
-	parser.delegate = self;
+      
+    parser.delegate = self;
 	[parser parse];
 }
 
@@ -136,7 +137,7 @@
 	}
 	if ([elementname isEqualToString:@"description"])
 	{
-		self.current.description = self.currentNodeContent;
+		self.current.description = self.currentNodeContent; 
 	}
 	if ([elementname isEqualToString:@"pubDate"])
 	{

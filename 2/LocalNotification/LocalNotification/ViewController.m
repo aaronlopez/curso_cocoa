@@ -30,7 +30,8 @@
     
     NSDate *now = [NSDate date];
     NSDate *newDate1 = [now dateByAddingTimeInterval:10];
-    localNotif.fireDate = newDate1;localNotif.timeZone = [NSTimeZone defaultTimeZone];
+    localNotif.fireDate = newDate1;
+    localNotif.timeZone = [NSTimeZone defaultTimeZone];
 	
 	localNotif.alertBody = @"Notificación local";
 	localNotif.alertAction = @"VIEW";

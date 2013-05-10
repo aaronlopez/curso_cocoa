@@ -60,6 +60,14 @@
 				<integer>3</integer>
 			</array>
 		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Tes</string>
+		</dict>
 	</array>
+	<key>Title</key>
+	<string></string>
 </dict>
 </plist>

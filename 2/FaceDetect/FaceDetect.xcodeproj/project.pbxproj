@@ -21,7 +21,6 @@
 		9386E75E173A821900022419 /* lena.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 9386E75D173A821900022419 /* lena.bmp */; };
 		9386E760173A822B00022419 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9386E75F173A822B00022419 /* QuartzCore.framework */; };
 		9386E762173A837D00022419 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9386E761173A837D00022419 /* CoreImage.framework */; };
-		9386E76C173AC1C900022419 /* facedetectionpic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9386E76B173AC1C900022419 /* facedetectionpic.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,7 +43,6 @@
 		9386E75D173A821900022419 /* lena.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = lena.bmp; sourceTree = "<group>"; };
 		9386E75F173A822B00022419 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9386E761173A837D00022419 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
-		9386E76B173AC1C900022419 /* facedetectionpic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = facedetectionpic.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +106,6 @@
 		9386E73F173A81B500022419 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9386E76B173AC1C900022419 /* facedetectionpic.jpg */,
 				9386E75D173A821900022419 /* lena.bmp */,
 				9386E740173A81B500022419 /* FaceDetect-Info.plist */,
 				9386E741173A81B500022419 /* InfoPlist.strings */,
@@ -178,7 +175,6 @@
 				9386E74F173A81B500022419 /* Default-568h@2x.png in Resources */,
 				9386E752173A81B500022419 /* MainStoryboard.storyboard in Resources */,
 				9386E75E173A821900022419 /* lena.bmp in Resources */,
-				9386E76C173AC1C900022419 /* facedetectionpic.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +303,7 @@
 				9386E75A173A81B500022419 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
