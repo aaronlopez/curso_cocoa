@@ -8,12 +8,7 @@
 
 #import "ViewController.h"
 
-@interface ViewController (){
-    CFURLRef		soundFileURLRef;
-	SystemSoundID	soundFileObject;
-}
-@property (readwrite)	CFURLRef		soundFileURLRef;
-@property (readonly)	SystemSoundID	soundFileObject;
+@interface ViewController ()
 @end
 
 @implementation ViewController
@@ -25,17 +20,21 @@
 {
     [super viewDidLoad];
    
-    NSURL *tapSound   = [[NSBundle mainBundle] URLForResource: @"tap"
-                                                withExtension: @"aif"];
+    NSURL *tapSound   = [[NSBundle mainBundle] URLForResource: @"tick"
+                                                withExtension: @"aiff"];
     
-    //self.soundFileURLRef = ( CFURLRef)objc_unretainedPointer( tapSound );
     
+    // Store the URL as a CFURLRef instance
+    self.soundFileURLRef = (__bridge CFURLRef)  tapSound ;
+    
+    // Create a system sound object representing the sound file.
     AudioServicesCreateSystemSoundID (
                                       
                                       soundFileURLRef,
                                       &soundFileObject
                                       );
-	// Do any additional setup after loading the view, typically from a nib.
+    OSStatus status = AudioServicesCreateSystemSoundID((__bridge CFURLRef)tapSound, &soundFileObject);
+    NSLog(@"AudioServicesCreateSystemSoundID status = %ld", status);
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,25 +48,6 @@
     AudioServicesPlaySystemSound (kSystemSoundID_Vibrate);
 
     
-}
-- (IBAction) playSystemSound: (id) sender {
-    
-    AudioServicesPlaySystemSound (soundFileObject);
-}
-
-
-// Respond to a tap on the Alert Sound button.
-- (IBAction) playAlertSound: (id) sender {
-    
-    AudioServicesPlayAlertSound (soundFileObject);
-}
-
-
-// Respond to a tap on the Vibrate button. In the Simulator and on devices with no
-//    vibration element, this method does nothing.
-- (IBAction) vibrate: (id) sender {
-    
-    AudioServicesPlaySystemSound (kSystemSoundID_Vibrate);
 }
 
 @end

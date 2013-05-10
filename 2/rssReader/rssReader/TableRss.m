@@ -36,7 +36,7 @@
     self.items =[[NSMutableArray alloc] initWithCapacity:0];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -76,16 +76,20 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   
+    
 }
 #pragma mark getData
 
 - (IBAction)refreshDataAsync:(id)sender {
-    	
+    [self query1];
+    
+	
+}
+
+-(void) query1{
     NSXMLParser *parser			= [[NSXMLParser alloc] initWithContentsOfURL:[NSURL URLWithString:@"https://s3-eu-west-1.amazonaws.com/david.miprueba/reuters.rss.xml"]];
 	parser.delegate = self;
 	[parser parse];
-	
 }
 
 
@@ -150,6 +154,34 @@
 	self.currentNodeContent = (NSMutableString *) [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
+
+
+
+-(void) query2{
+    
+    
+    NSString *urlString = @"https://s3-eu-west-1.amazonaws.com/david.miprueba/reuters.rss.xml";
+    
+    [NSURLConnection connectionWithRequest:
+     [NSURLRequest requestWithURL:
+      [NSURL URLWithString:urlString]]
+                                  delegate:self];
+}
+
+
+-(void) post{
+    NSString *post = @"key1=val1&key2=val2";
+    NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding  allowLossyConversion:YES];
+    
+    NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
+    [request setURL:[NSURL URLWithString:@"http://server"]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
+}
 
 
 @end

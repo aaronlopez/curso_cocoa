@@ -9,5 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <AudioToolbox/AudioServices.h>
 @interface ViewController : UIViewController
+{
+    
+    CFURLRef        soundFileURLRef;
+    SystemSoundID   soundFileObject;
+    
+}
 
+@property (readwrite)   CFURLRef        soundFileURLRef;
+@property (readonly)    SystemSoundID   soundFileObject;
 @end
