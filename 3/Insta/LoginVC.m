@@ -52,31 +52,23 @@
 
 #pragma mark WS Call
 -(IBAction)buttonLogin:(UIButton*)sender {
-	//form fields validation
 	if (self.username.text.length < 4 || self.password.text.length < 4) {
 		
 		return;
 	}
-	//salt the password
 	NSString* saltedPassword = [NSString stringWithFormat:@"%@%@", self.password.text, kSalt];
-	//prepare the hashed storage
 	NSString* hashedPassword = nil;
 	unsigned char hashedPasswordData[CC_SHA1_DIGEST_LENGTH];
-	//hash the pass
 	NSData *data = [saltedPassword dataUsingEncoding: NSUTF8StringEncoding];
 	if (CC_SHA1([data bytes], [data length], hashedPasswordData)) {
 		hashedPassword = [[NSString alloc] initWithBytes:hashedPasswordData length:sizeof(hashedPasswordData) encoding:NSASCIIStringEncoding];
-	}	//check whether it's a login or register
-	NSString* command = (sender.tag==1)?@"register":@"login";
+	}	NSString* command = (sender.tag==1)?@"register":@"login";
 	NSMutableDictionary* params =[NSMutableDictionary dictionaryWithObjectsAndKeys:command, @"command", self.username.text, @"username", hashedPassword, @"password", nil];
-	//make the call to the web API
 	[[WS_API sharedInstance] commandWithParams:params onCompletion:^(NSDictionary *json) {
-		//result returned
 		NSDictionary* res = [[json objectForKey:@"result"] objectAtIndex:0];
 		if ([json objectForKey:@"error"]==nil && [[res objectForKey:@"IdUser"] intValue]>0) {
 			[[WS_API sharedInstance] setUser: res];
 			[self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-			//show message to the user
 			[[[UIAlertView alloc] initWithTitle:@"Logged in" message:[NSString stringWithFormat:@"Welcome %@",[res objectForKey:@"username"]] delegate:nil cancelButtonTitle:@"Close" otherButtonTitles: nil] show];
 		} 
 	}];
