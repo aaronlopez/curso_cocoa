@@ -39,7 +39,6 @@
      } forState:UIControlStateNormal];
     
     [[UILabel appearance] setFont: [UIFont fontWithName:@"Notethis" size:18.0]];
-     
 }
 
 @end

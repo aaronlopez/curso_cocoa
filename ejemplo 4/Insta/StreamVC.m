@@ -38,7 +38,11 @@
 }
 -(void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-  
+    [self refresh];
+
+    if (![[WS_API sharedInstance] isAuthorized]) {
+		[self performSegueWithIdentifier:@"login" sender:nil];
+    }
 }
 - (void)didReceiveMemoryWarning
 {
@@ -83,11 +87,18 @@
 
 #pragma mark ServerCalls
 -(void)refresh{
-    
+    [[WS_API sharedInstance] commandWithParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:@"stream", @"command", nil] onCompletion:^(NSDictionary *json) {
+        
+		self.photos=[json objectForKey:@"result"];
+        [self.collectionView reloadData];
+	}];
 }
 
 -(void)logout {
-    
+	[[WS_API sharedInstance] commandWithParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:@"logout", @"command", nil] onCompletion:^(NSDictionary *json) {
+        [WS_API sharedInstance].user = nil;
+        [self performSegueWithIdentifier:@"login" sender:nil];
+	}];
 }
 
 
